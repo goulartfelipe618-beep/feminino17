@@ -1,0 +1,223 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500&family=Spectral:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
+
+@layer base {
+  :root {
+    --background: 250 30% 98%;
+    --foreground: 240 10% 20%;
+
+    --card: 250 25% 99%;
+    --card-foreground: 240 10% 20%;
+
+    --popover: 250 25% 99%;
+    --popover-foreground: 240 10% 20%;
+
+    --primary: 255 30% 65%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 250 20% 95%;
+    --secondary-foreground: 240 10% 30%;
+
+    --muted: 250 15% 93%;
+    --muted-foreground: 240 8% 55%;
+
+    --accent: 250 20% 75%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 50% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 250 15% 90%;
+    --input: 250 15% 90%;
+    --ring: 255 30% 65%;
+
+    --radius: 0.75rem;
+
+    --silver: 240 5% 78%;
+
+    --sidebar-background: 250 30% 98%;
+    --sidebar-foreground: 240 10% 20%;
+    --sidebar-primary: 255 30% 65%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 250 20% 95%;
+    --sidebar-accent-foreground: 240 10% 30%;
+    --sidebar-border: 250 15% 90%;
+    --sidebar-ring: 255 30% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.01em;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Spectral', serif;
+    font-weight: 400;
+  }
+}
+
+/* Serene card — silver border, overlapping elements */
+.serene-card {
+  background: hsl(250, 25%, 99%);
+  border: 1px solid hsl(240, 5%, 88%);
+  border-radius: 0.75rem;
+  padding: 2rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.serene-card:hover {
+  border-color: hsl(255, 30%, 80%);
+  box-shadow: 0 8px 32px hsla(255, 30%, 65%, 0.08);
+}
+
+/* Elevated card */
+.serene-card-elevated {
+  background: hsl(0, 0%, 100%);
+  border: 1px solid hsl(240, 5%, 90%);
+  border-radius: 1rem;
+  box-shadow: 0 4px 24px hsla(255, 30%, 65%, 0.06);
+}
+
+/* Input */
+.serene-input {
+  background: hsl(250, 20%, 97%);
+  border: 1px solid hsl(250, 15%, 90%);
+  padding: 12px 16px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 300;
+  width: 100%;
+  border-radius: 0.5rem;
+  transition: all 0.3s;
+  color: hsl(240, 10%, 20%);
+  letter-spacing: 0.02em;
+}
+
+.serene-input::placeholder {
+  color: hsl(240, 8%, 62%);
+  font-weight: 300;
+}
+
+.serene-input:focus {
+  outline: none;
+  border-color: hsl(255, 30%, 75%);
+  box-shadow: 0 0 0 3px hsla(255, 30%, 65%, 0.1);
+  background: hsl(0, 0%, 100%);
+}
+
+/* Primary button with glow */
+.serene-btn {
+  background: hsl(255, 30%, 65%);
+  color: hsl(0, 0%, 100%);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 14px 36px;
+  border: none;
+  border-radius: 0.5rem;
+  transition: all 0.4s;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.serene-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, hsla(255, 50%, 80%, 0.3), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.serene-btn:hover {
+  background: hsl(255, 30%, 58%);
+  box-shadow: 0 4px 20px hsla(255, 30%, 65%, 0.3);
+}
+
+.serene-btn:hover::before {
+  opacity: 1;
+}
+
+/* Outline button */
+.serene-btn-outline {
+  background: transparent;
+  color: hsl(255, 30%, 65%);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 13px 36px;
+  border: 1px solid hsl(255, 30%, 75%);
+  border-radius: 0.5rem;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+
+.serene-btn-outline:hover {
+  background: hsl(255, 30%, 65%);
+  color: hsl(0, 0%, 100%);
+  border-color: hsl(255, 30%, 65%);
+  box-shadow: 0 4px 20px hsla(255, 30%, 65%, 0.25);
+}
+
+/* Silver line */
+.silver-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, hsl(240, 5%, 85%), transparent);
+}
+
+/* Lavender orb pulse */
+@keyframes orb-pulse {
+  0%, 100% { box-shadow: 0 0 12px 4px hsla(255, 40%, 75%, 0.25); }
+  50% { box-shadow: 0 0 20px 8px hsla(255, 40%, 75%, 0.1); }
+}
+
+.orb-pulse {
+  animation: orb-pulse 3s ease-in-out infinite;
+}
+
+/* Nav glow effect */
+.nav-glow {
+  position: relative;
+  transition: all 0.3s;
+}
+
+.nav-glow::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: hsl(255, 30%, 75%);
+  border-radius: 1px;
+  transition: width 0.3s;
+  box-shadow: 0 0 6px hsla(255, 40%, 75%, 0.4);
+}
+
+.nav-glow:hover::after,
+.nav-glow.active::after {
+  width: 100%;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: hsl(250, 30%, 97%); }
+::-webkit-scrollbar-thumb { background: hsla(255, 30%, 65%, 0.2); border-radius: 2px; }
